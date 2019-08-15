@@ -1,0 +1,21 @@
+---
+- name: Install base dependencies
+  become: yes
+  become_method: sudo
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apache
+    - openssl-devel
+    - tree
+    - expect
+    - libselinux-python
+  tags:
+    - xdmod
+
+#- include: install_eod.yaml
+# when: eod_install
+# tags:
+#   - eod
+
